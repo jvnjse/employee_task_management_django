@@ -104,10 +104,12 @@ class JobStatusView(APIView):
         status_value = request.data.get("status")
         comment = request.data.get("comments")
 
-        data = {
-            "status": status_value,
-            "comments": comment,
-        }
+        data = {}
+        if status_value:
+            data["status"] = status_value
+        if comment:
+            data["comments"] = comment
+
         serializer = JobSerializer(job, data=data, partial=True)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
