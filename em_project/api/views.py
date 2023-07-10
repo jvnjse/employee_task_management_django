@@ -103,12 +103,15 @@ class JobStatusView(APIView):
 
         status_value = request.data.get("status")
         comment = request.data.get("comments")
+        submission_date = request.data.get("submission_date")
 
         data = {}
         if status_value:
             data["status"] = status_value
         if comment:
             data["comments"] = comment
+        if submission_date:
+            data["submission_date"] = submission_date
 
         serializer = JobSerializer(job, data=data, partial=True)
         if serializer.is_valid(raise_exception=True):

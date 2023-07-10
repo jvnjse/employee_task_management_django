@@ -70,6 +70,7 @@ class JobSerializer(serializers.ModelSerializer):
             "start_date",
             "end_date",
             "status",
+            "submission_date",
         ]
 
     def validate(self, data):

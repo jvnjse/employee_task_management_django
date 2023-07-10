@@ -55,6 +55,7 @@ class Job(models.Model):
     employees = models.ManyToManyField(CustomUser, related_name="jobs_assigned")
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
+    submission_date = models.DateField(blank=True, null=True)
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default="NOT_STARTED"
     )
